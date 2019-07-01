@@ -6,11 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "dev:mock": "cross-env PET_MOCK=mock npm run dev"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "parcel-bundler": "^1.12.3"
   },
   "dependencies": {
