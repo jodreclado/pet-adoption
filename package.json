@@ -2,18 +2,23 @@
   "name": "intro-to-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/App.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "dev": "parcel src/index.html",
-    "dev:mock": "cross-env PET_MOCK=mock npm run dev"
+    "dev:mock": "cross-env PET_MOCK=mock npm run dev",
+    "typecheck": "tsc --noEmit"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/reach__router": "^1.2.4",
+    "@types/react": "^16.8.22",
+    "@types/react-dom": "^16.8.4",
     "cross-env": "^5.2.0",
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.3",
+    "typescript": "^3.5.2"
   },
   "dependencies": {
     "@frontendmasters/pet": "^1.0.3",

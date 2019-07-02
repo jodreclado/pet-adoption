@@ -1,26 +1,40 @@
 import React, { lazy } from "react";
-import pet from "@frontendmasters/pet";
-import { navigate } from "@reach/router";
+import pet, { Photo, AnimalResponse } from "@frontendmasters/pet";
+import { navigate, RouteComponentProps } from "@reach/router";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 const Modal = lazy(() => import("./Modal"));
 
-class Details extends React.Component {
-  constructor(props) {
+type Props = RouteComponentProps<{ id: string }>;
+
+class Details extends React.Component<Props> {
+  public constructor(props: Props) {
     super(props);
-    this.state = {
-      loading: true,
-      showModal: false,
-    };
     this.toggleModal = this.toggleModal.bind(this);
     this.adopt = this.adopt.bind(this);
   }
 
-  componentDidMount() {
+  public state = {
+    loading: true,
+    showModal: false,
+    name: "",
+    animal: "",
+    location: "",
+    description: "",
+    media: [] as Photo[],
+    url: "",
+    breed: ""
+  }
+
+  public componentDidMount() {
+    if (!this.props.id) {
+      navigate("/");
+      return;
+    }
     pet
-      .animal(this.props.id)
-      .then(({ animal }) => {
+      .animal(+this.props.id)
+      .then(({ animal }: AnimalResponse) => {
         this.setState({
           name: animal.name,
           animal: animal.type,
@@ -34,18 +48,18 @@ class Details extends React.Component {
           url: animal.url,
         });
       })
-      .catch(err => this.setState({ error: err }));
+      .catch((err: Error) => this.setState({ error: err }));
   }
 
-  toggleModal() {
+  public toggleModal() {
     this.setState({ showModal: !this.state.showModal });
   }
 
-  adopt() {
+  public adopt() {
     navigate(this.state.url);
   }
   
-  render() {
+  public render() {
     if (this.state.loading) {
       return <h1>loading … </h1>;
     }
@@ -98,7 +112,7 @@ class Details extends React.Component {
   }
 }
 
-export default function DetailsErrorBoundary(props) {
+export default function DetailsErrorBoundary(props: Props) {
   return (
     <ErrorBoundary>
       <Details {...props} />
