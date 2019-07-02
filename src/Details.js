@@ -1,10 +1,10 @@
-import React from "react";
+import React, { lazy } from "react";
 import pet from "@frontendmasters/pet";
 import { navigate } from "@reach/router";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
-import Modal from "./Modal";
+const Modal = lazy(() => import("./Modal"));
 
 class Details extends React.Component {
   constructor(props) {
