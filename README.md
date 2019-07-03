@@ -14,10 +14,10 @@ To use mock data for offline mode:
 npm run dev:mock
 ```
 
-# Notes
+# Deployment Notes
 - Didn't deploy to gh-pages due to HTTPS enforcment (@frontendmasters/pet uses HTTP)
 - [Parcel build issue](https://github.com/parcel-bundler/parcel/issues/505)
-- [Potential deployment problem with Reach Router](https://github.com/facebook/create-react-app/issues/1765#issuecomment-285114194)
+- [Reach Router issue](https://github.com/facebook/create-react-app/issues/1765#issuecomment-285114194)
 
 
 
